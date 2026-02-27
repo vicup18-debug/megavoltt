@@ -256,13 +256,18 @@
 
         /* ====== WHEN CONTENT IS READY: small fade-in of body content (example) ====== */
         .site-content {
-            opacity: 0;
+            opacity: 1 !important;
+            /* Ensure content is always visible if JS fails on mobile */
             transition: opacity 400ms ease;
         }
 
-        body.preloader-hidden .site-content {
-            opacity: 1;
-            transition-delay: 350ms;
+        /* Ensure the preloader overlay is properly removed */
+        body.preloader-hidden #preloader {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            display: none;
+            /* Force physical removal from the mobile screen */
         }
 
         /* RESPONSIVE adjustments */
