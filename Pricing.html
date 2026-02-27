@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Megavolt Energy Limited Pricing - Transparent solar and power backup packages for homes and businesses in Nigeria.">
+    <title>Solar Packages | Megavolt Energy Limited</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- CORE VARIABLES (Megavolt Theme) --- */
+        :root {
+            --primary: #FF8C00;
+            /* Megavolt Orange */
+            --primary-dark: #E67E00;
+            --navy: #0F172A;
+            /* Deep Navy */
+            --cyan: #FFD700;
+            /* Sun Yellow for accents */
+            --white: #ffffff;
+            --bg-light: #f8fbff;
+            --text-main: #334155;
+            --text-dark: #0f172a;
+            --success: #10b981;
+            --radius: 24px;
+            --shadow-soft: 0 20px 40px rgba(255, 140, 0, 0.08);
+            --shadow-card: 0 15px 35px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 30px 60px rgba(15, 23, 42, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+        }
+
+        a {
+            text-decoration: none;
+            transition: 0.3s;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--navy), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3);
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+            border: 1px solid #e2e8f0;
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 80px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* --- HERO --- */
+        .pricing-hero {
+            padding-top: 180px;
+            padding-bottom: 80px;
+            background: radial-gradient(circle at center, #ffffff, #fff7ed);
+            text-align: center;
+        }
+
+        .pricing-hero h1 {
+            font-size: clamp(2.5rem, 4vw, 3.8rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        /* --- TOGGLE --- */
+        .toggle-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        .pricing-toggle {
+            background: white;
+            padding: 5px;
+            border-radius: 50px;
+            display: flex;
+            position: relative;
+            border: 1px solid #e2e8f0;
+        }
+
+        .toggle-btn {
+            padding: 12px 30px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+            transition: 0.3s;
+        }
+
+        .toggle-btn.active {
+            color: white;
+        }
+
+        .toggle-bg {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 50%;
+            height: calc(100% - 10px);
+            background: var(--navy);
+            border-radius: 40px;
+            transition: 0.3s;
+            z-index: 1;
+        }
+
+        .toggle-wrapper.business .toggle-bg {
+            left: 50%;
+            width: 48%;
+        }
+
+        /* --- CARDS --- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .price-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            position: relative;
+            transition: 0.4s;
+            border: 1px solid #f1f5f9;
+            box-shadow: var(--shadow-card);
+        }
+
+        .price-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+
+        .price-card.popular {
+            background: var(--navy);
+            color: white;
+            transform: scale(1.05);
+            z-index: 2;
+            box-shadow: 0 25px 50px rgba(15, 23, 42, 0.3);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .plan-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .plan-price span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            opacity: 0.7;
+        }
+
+        .feature-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+
+        .feature-list i {
+            color: var(--success);
+        }
+
+        .popular .feature-list i {
+            color: var(--cyan);
+        }
+
+        /* --- ADD-ONS --- */
+        .addon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .addon-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .addon-price {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* --- TABLE --- */
+        .comparison-wrapper {
+            overflow-x: auto;
+            margin-top: 60px;
+            background: white;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-soft);
+        }
+
+        table {
+            width: 100%;
+            min-width: 700px;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        th:first-child,
+        td:first-child {
+            text-align: left;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .highlight-cell {
+            background: #fff7ed;
+            color: var(--primary);
+            font-weight: 700;
+            border-radius: 10px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--navy);
+            color: #cbd5e1;
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-title {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .pricing-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="Megavolt Energy Limited.html" class="nav-logo">
+                    <img src="Images/megavolt logo.jpeg" alt="Megavolt Logo">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="Megavolt Energy Limited.html">Home</a></li>
+                    <li><a href="Services.html">Services</a></li>
+                    <li><a href="Pricing.html" class="active">Packages</a></li>
+                    <li><a href="contact us.html">Contact</a></li>
+                </ul>
+                <a href="contact us.html" class="btn btn-primary">Get Quote</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="pricing-hero">
+        <div class="container" data-aos="fade-up">
+            <h1 class="text-gradient">Let The Sun Pay Your Bills. <br> Zero Hidden Charges.</h1>
+            <p>Pick a solar package that fits your home or office. Every plan includes professional installation, tier-1
+                hardware, and 24/7 support.</p>
+            <div style="display: flex; justify-content: center; gap: 15px;">
+                <a href="contact us.html" class="btn btn-primary">Book Free Energy Audit</a>
+                <a href="https://wa.me/08029865247" class="btn btn-white"><i class="fab fa-whatsapp"></i> WhatsApp
+                    Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" style="padding-bottom: 100px;">
+
+        <div class="toggle-wrapper" data-aos="fade-up">
+            <div class="pricing-toggle" onclick="togglePricing()">
+                <div class="toggle-bg"></div>
+                <div class="toggle-btn active" id="btn-home">Residential Solar</div>
+                <div class="toggle-btn" id="btn-business">Corporate / Industrial</div>
+            </div>
+        </div>
+
+        <div class="pricing-grid" id="pricing-container">
+            <div class="price-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="plan-name">Basic Backup</div>
+                <div class="plan-price">₦450k <span>/ installed</span></div>
+                <p class="plan-desc">Essential power backup for small apartments and basic loads.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-bolt"></i> 1.5kVA Hybrid Inverter</li>
+                    <li><i class="fas fa-car-battery"></i> 200AH Tubular Battery</li>
+                    <li><i class="fas fa-solar-panel"></i> 2x 300W Solar Panels</li>
+                    <li><i class="fas fa-check-circle"></i> Supports: TV, Fans, Lights</li>
+                </ul>
+                <a href="contact us.html" class="btn btn-white"
+                    style="width: 100%; justify-content: center; margin-top: 20px;">Select Plan</a>
+            </div>
+
+            <div class="price-card popular" data-aos="fade-up" data-aos-delay="100">
+                <div class="popular-badge">BEST SELLER</div>
+                <div class="plan-name">Home Deluxe</div>
+                <div class="plan-price">₦1.2M <span>/ installed</span></div>
+                <p class="plan-desc">Perfect energy transition for standard 3-4 bedroom duplexes.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> 3.5kVA Hybrid Inverter</li>
+                    <li><i class="fas fa-check-circle"></i> 5kWh Lithium Battery</li>
+                    <li><i class="fas fa-check-circle"></i> 6x 450W Solar Panels</li>
+                    <li><i class="fas fa-check-circle"></i> Supports: Fridge + Full Load</li>
+                </ul>
+                <a href="contact us.html" class="btn btn-primary"
+                    style="width: 100%; justify-content: center; margin-top: 20px;">Select Plan</a>
+            </div>
+
+            <div class="price-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="plan-name">Premium Elite</div>
+                <div class="plan-price">₦2.5M <span>/ installed</span></div>
+                <p class="plan-desc">Heavy-duty solar power for large homes with AC units.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-bolt"></i> 5kVA Smart Inverter</li>
+                    <li><i class="fas fa-car-battery"></i> 10kWh Lithium Battery</li>
+                    <li><i class="fas fa-solar-panel"></i> 10x 550W Solar Panels</li>
+                    <li><i class="fas fa-snowflake"></i> Supports: Air Conditioners</li>
+                </ul>
+                <a href="contact us.html" class="btn btn-white"
+                    style="width: 100%; justify-content: center; margin-top: 20px;">Select Plan</a>
+            </div>
+        </div>
+
+        <h3 style="margin-bottom: 20px;">Hardware Upgrades</h3>
+        <div class="addon-grid" data-aos="fade-up">
+            <div class="addon-card">
+                <div class="addon-info">
+                    <h4>Extra 550W Panel</h4>
+                    <p>Boost your daytime yield</p>
+                </div>
+                <div class="addon-price">+₦150k</div>
+            </div>
+            <div class="addon-card">
+                <div class="addon-info">
+                    <h4>Lithium Upgrade</h4>
+                    <p>Swap tubular for Lithium bank</p>
+                </div>
+                <div class="addon-price">+₦850k</div>
+            </div>
+            <div class="addon-card">
+                <div class="addon-info">
+                    <h4>Solar Street Light</h4>
+                    <p>Independent compound lighting</p>
+                </div>
+                <div class="addon-price">+₦120k</div>
+            </div>
+        </div>
+
+        <div class="comparison-wrapper" data-aos="fade-up">
+            <h3 style="text-align: center; margin-bottom: 30px;">Compare Solar Capabilities</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Specifications</th>
+                        <th>Basic</th>
+                        <th style="color: var(--primary);">Deluxe</th>
+                        <th>Elite</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Inverter Capacity</td>
+                        <td>1.5kVA</td>
+                        <td class="highlight-cell">3.5kVA</td>
+                        <td>5kVA</td>
+                    </tr>
+                    <tr>
+                        <td>Battery Technology</td>
+                        <td>Tubular Deep Cycle</td>
+                        <td class="highlight-cell">Lithium-Ion</td>
+                        <td>Lithium-Ion (Double)</td>
+                    </tr>
+                    <tr>
+                        <td>Powers Air Conditioner?</td>
+                        <td><i class="fas fa-times" style="color: #cbd5e1;"></i></td>
+                        <td class="highlight-cell"><i class="fas fa-times" style="color: #cbd5e1;"></i></td>
+                        <td><i class="fas fa-check" style="color: var(--success);"></i></td>
+                    </tr>
+                    <tr>
+                        <td>App Monitoring</td>
+                        <td>No</td>
+                        <td class="highlight-cell">Yes</td>
+                        <td>Yes (Smart)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 class="footer-title">MEGAVOLT ENERGY LTD</h3>
+                    <p style="font-size: 0.9rem; line-height: 1.8; opacity: 0.8;">
+                        Renewable Energy & Power Backup Solutions. We are dedicated to providing sustainable power to
+                        every Nigerian home.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="footer-title">Lagos Office</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">
+                        150/151, Egbeda Akowonjo Road, Next Level Complex, Lagos State.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="footer-title">Kaduna Office</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">
+                        Second Floor, Gamako Plaza W9, Ahmadu Bello Way, Kaduna.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="footer-title">Contact</h3>
+                    <p><i class="fas fa-phone-alt"></i> 08029865247</p>
+                    <p><i class="fas fa-envelope"></i> megavoltenergy001@gmail.com</p>
+                </div>
+            </div>
+            <div
+                style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; font-size: 0.85rem; opacity: 0.6;">
+                &copy; 2026 Megavolt Energy Limited. RC: 2016593. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, offset: 100, once: true });
+
+        // Logic for Toggle Button
+        function togglePricing() {
+            const container = document.getElementById('pricing-container');
+            const wrapper = document.querySelector('.toggle-wrapper');
+            const btnHome = document.getElementById('btn-home');
+            const btnBiz = document.getElementById('btn-business');
+
+            if (wrapper.classList.contains('business')) {
+                wrapper.classList.remove('business');
+                btnHome.classList.add('active');
+                btnBiz.classList.remove('active');
+                // Content for Residential
+            } else {
+                wrapper.classList.add('business');
+                btnHome.classList.remove('active');
+                btnBiz.classList.add('active');
+                // Content for Business
+            }
+        }
+    </script>
+</body>
+
+</html>
